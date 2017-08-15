@@ -36,7 +36,7 @@
 #include <QPen>
 #include <QFont>
 
-class QPrinter;
+class QPdfWriter;
 class QPainter;
 class QAbstractItemModel;
 
@@ -54,7 +54,7 @@ public:
 class TablePrinter
 {
 public:
-  TablePrinter(QPainter *painter, QPrinter *printer);
+  TablePrinter(QPainter *painter, QPdfWriter *printer);
   bool printTable(const QAbstractItemModel* model, const QVector<int> columnStretch, const QVector<QString> headers = QVector<QString>());
   QString lastError();
   void setCellMargin(int left = 10, int right = 5, int top = 5, int bottom = 5);
@@ -68,7 +68,7 @@ public:
   void setMaxRowHeight(int height);
 private:
   QPainter *painter;
-  QPrinter *printer;
+  QPdfWriter *printer;
   PagePrepare *prepare;
   QPen pen; // for table borders
   QFont headersFont;

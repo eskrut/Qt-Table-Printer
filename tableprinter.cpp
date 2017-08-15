@@ -34,9 +34,9 @@
 
 #include <QAbstractItemModel>
 #include <QPainter>
-#include <QPrinter>
+#include <QPdfWriter>
 
-TablePrinter::TablePrinter(QPainter* painter, QPrinter* printer) :
+TablePrinter::TablePrinter(QPainter* painter, QPdfWriter* printer) :
     painter(painter),
     printer(printer) {
     topMargin = 5;
@@ -73,10 +73,10 @@ bool TablePrinter::printTable(const QAbstractItemModel* model, const QVector<int
         error = "Different columns count in model and in headers";
         return false;
     }
-    if(!printer->isValid()) {
-        error = "printer.isValid() == false";
-        return false;
-    }
+//    if(!printer->isValid()) {
+//        error = "printer.isValid() == false";
+//        return false;
+//    }
     if(!painter->isActive()) {
         error = "painter.isActive() == false";
         return false;
